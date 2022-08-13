@@ -27,6 +27,12 @@ help = "alias for esptool"
 category = "tools"
 command = "esptool.py $@"
 
+[[commands]]
+name = "build"
+help = "run the buildscript"
+category = "tools"
+command = "scripts/build.elv"
+
 ### If you'd rather list the tools and commands being brought in while
 ### also providing some help text on each, use commands as below instead
 ### of putting packages in the packages list above.
