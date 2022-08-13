@@ -8,9 +8,9 @@ gc.collect()
 
 # read the wifi password from a file
 # the format of the file will be ssid\npassword (separated by newline)
-pwfile = open('/wifi_passwd', 'r')
-wifi_ssid = pwfile.readline()
-wifi_pass = pwfile.readline()
+import json
+confstr = open('config.json', 'r')
+config = json.load(confstr)
 
 # connect to wifi
 import network
@@ -20,8 +20,11 @@ wlan.active(True)
 if not wlan.isconnected():
     print(wlan.scan())
     print('connecting to network...')
-    wlan.connect(wifi_ssid, wifi_pass)
+    wlan.connect(config["wifi"]["ssid"], config["wifi"]["pass"])
     while not wlan.isconnected():
         pass
-print('network config:', wlan.ifconfig())
 
+ifconfig = wlan.ifconfig()
+
+# print('network config:', ifconfig)
+print('current ip: ', ifconfig[0])
