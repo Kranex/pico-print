@@ -8,3 +8,6 @@ dist/*
 !dist/.gitkeep
 
 site
+
+# real production config (not the example)
+config.json
