@@ -21,6 +21,12 @@ name = "pico-print"
 
 ### Commands
 
+[[commands]]
+name = "esp"
+help = "alias for esptool"
+category = "tools"
+command = "esptool.py $@"
+
 ### If you'd rather list the tools and commands being brought in while
 ### also providing some help text on each, use commands as below instead
 ### of putting packages in the packages list above.
