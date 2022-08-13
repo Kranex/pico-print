@@ -17,7 +17,7 @@ name = "pico-print"
 # """
 
 ### Add tools to be brought into your shell automatically.
- packages = [ "esptool", "micropython", "adafruit-ampy", "rshell", "screen"]
+ packages = [ "esptool", "micropython", "adafruit-ampy", "rshell", "screen", "elvish" ]
 
 ### Commands
 
