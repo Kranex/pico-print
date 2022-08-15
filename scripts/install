@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+DEVICE=${1:-/dev/ttyUSB0}
+
+if [ -h "./dist" ]; then
+	echo "run build first"
+	exit 1
+fi
+
+if [ ! -f "config.json" ]; then
+	echo "please create config.json, refusing to wipe $DEVICE without it"
+	exit 1
+fi
+
+# echo "=== Backing up config from $DEVICE"
+# ampy --port=$DEVICE get config.json config.json.backup 2>&1 | tail -n 1 || true
+
+echo "=== Clearing $DEVICE"
+ampy --port=$DEVICE rmdir / 2> /dev/null || true
+
+echo "=== Copying dist to $DEVICE, this may take some time..."
+ampy --port=$DEVICE put dist /
+
+echo "=== Copying config to $DEVICE"
+ampy --port=$DEVICE put config.json

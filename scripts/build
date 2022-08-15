@@ -1,15 +1,16 @@
-#!/usr/bin/env elvish
+#!/usr/bin/env bash
 
+rm -rf dist
 mkdir -p dist
-rm -r dist/*
 
 echo "=== Copying micropython code..."
-cp micropython/boot.py dist/boot.py
+cp -r src/* dist/
 
 echo "=== Building Svelte app..."
 cd svelte
 npm run build
 cd ../
+
 echo "=== Copying Svelte app..."
-cp -R svelte/public dist/
+cp -r svelte/public dist/
 echo "=== Done!"
